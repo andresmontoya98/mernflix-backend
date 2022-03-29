@@ -12,8 +12,11 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://Andresrock98:Colombia1998@clustercursomern.mqt9m.mongodb.net/mernflix?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() =>  console.log('mymerndb connection successful'))
+
+require('dotenv').config();
+
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() =>  console.log('mernflix connection successful'))
     .catch((err) => console.error(err));
 
 // view engine setup
